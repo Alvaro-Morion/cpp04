@@ -6,11 +6,13 @@
 /*   By: amorion- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 17:11:35 by amorion-          #+#    #+#             */
-/*   Updated: 2022/04/13 17:44:53 by amorion-         ###   ########.fr       */
+/*   Updated: 2022/04/17 11:57:50 by amorion-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Animal.hpp"
+
+/* Constructor destructor */
 
 Animal::Animal()
 {
@@ -29,16 +31,34 @@ Animal::~Animal()
 	return;
 }
 
-Animal const &Animal::operator=(Animal const &rhs)
+/* Opertors */
+
+void	Animal::operator=(Animal const &rhs)
 {
+	std::cout << "Animal =\n";
 	this->type = rhs.type;
-	return(*this);
 }
+
+/* Getters and setters */
 
 std::string Animal::getType(void) const
 {
 	return(this->type);
 }
+
+std::string	Animal::getIdea(int n) const
+{
+	(void)n;
+	return("This animal doesn't hava a brain");
+}
+
+void	Animal::setIdea(int n, std::string const idea)
+{
+	(void)n;
+	(void)idea;
+	std::cout << "This animal doesn't have a brain\n";
+}
+/* Functions */
 
 void	Animal::makeSound(void) const
 {

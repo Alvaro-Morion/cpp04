@@ -6,7 +6,7 @@
 /*   By: amorion- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 17:48:53 by amorion-          #+#    #+#             */
-/*   Updated: 2022/04/13 19:36:09 by amorion-         ###   ########.fr       */
+/*   Updated: 2022/04/17 12:36:30 by amorion-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,15 @@ class	Cat : public Animal{
 		Cat(Cat const &src);
 
 		~Cat();
-
-		Cat const &operator=(Cat const &rhs);
+		
+		Cat const	&operator=(Cat const &rhs);
+		void		operator=(Animal const &rhs);
+		
+		std::string	getIdea(int n) const;
+		void		setIdea(int n, std::string const idea);
 
 		void	makeSound(void) const;
 	private:
-		Brain* _Brain;
+		Brain *brain;
 };
 #endif

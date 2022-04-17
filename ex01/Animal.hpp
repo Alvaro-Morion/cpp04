@@ -6,7 +6,7 @@
 /*   By: amorion- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 17:17:39 by amorion-          #+#    #+#             */
-/*   Updated: 2022/04/13 19:34:53 by amorion-         ###   ########.fr       */
+/*   Updated: 2022/04/17 12:08:57 by amorion-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,13 @@ class	Animal{
 
 		virtual ~Animal();
 
-		Animal const &operator=(Animal const &rhs);
+		virtual void	operator=(Animal const &rhs);
 		
-		std::string getType(void) const;
+		std::string 		getType(void) const;
+		virtual	std::string	getIdea(int n) const;
+		
+		virtual void	setIdea(int n, std::string const idea);
+		
 		virtual void makeSound(void) const;
 
 	protected:
