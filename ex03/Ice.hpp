@@ -6,7 +6,7 @@
 /*   By: amorion- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/16 12:15:15 by amorion-          #+#    #+#             */
-/*   Updated: 2022/04/16 13:34:28 by amorion-         ###   ########.fr       */
+/*   Updated: 2022/04/19 11:50:01 by amorion-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ class	Ice : public AMateria{
 
 		Ice const	&operator=(Ice const &rhs);
 
-		Ice		*clone() const;
+		AMateria	*clone() const;
 		void	use(ICharacter& target);
 };
 #endif

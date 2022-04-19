@@ -6,11 +6,11 @@
 #    By: amorion- <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/20 09:14:58 by amorion-          #+#    #+#              #
-#    Updated: 2022/04/16 13:09:18 by amorion-         ###   ########.fr        #
+#    Updated: 2022/04/19 11:35:52 by amorion-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS = Amateria.cpp Ice.cpp Cure.cpp
+SRCS = AMateria.cpp Ice.cpp Cure.cpp Character.cpp main.cpp
 OBJS = $(SRCS:.cpp=.o)
 
 CC = clang++

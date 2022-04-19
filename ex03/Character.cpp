@@ -6,7 +6,7 @@
 /*   By: amorion- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/16 13:00:47 by amorion-          #+#    #+#             */
-/*   Updated: 2022/04/16 13:41:00 by amorion-         ###   ########.fr       */
+/*   Updated: 2022/04/19 12:57:28 by amorion-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,20 @@
 
 /* Constructor destructor*/
 
-Character::Character() : name("Unnamed")
+Character::Character() 
 {
+	this->name = "Unnamed";
 	for (int i=0; i < 4; i++)
 		inventory[i] = NULL;
 	std::cout << "Character: Default constructor\n";
 }
 
-Character::Character(std::string const name) : name(name)
+Character::Character(std::string const name)
 {
+	this->name = name;
 	for (int i=0; i<4; i++)
-		inverntory[i] = NULL;
-	std::cout << "Character: Parametric constructor\n";"
+		inventory[i] = NULL;
+	std::cout << "Character: Parametric constructor\n";
 }
 
 Character::Character(Character const &src)
@@ -33,10 +35,10 @@ Character::Character(Character const &src)
 	this->name = src.name;
 	for (int i=0; i<4; i++)
 	{
-		if(rhs.inventory[i])
-            this->inventory[i] = new AMateria(*(rhs.inventory[i]));
+		if(src.inventory[i])	 
+			 this->inventory[i] = src.inventory[i]->clone();
         else
-            this->inventory[i] = NULL;
+			this->inventory[i] = NULL;
 	}
 	std::cout << "Character: Copy constructor\n";
 }
@@ -44,6 +46,12 @@ Character::Character(Character const &src)
 Character::~Character()
 {
 	std::cout << "Character: destructor\n";
+	for(int i=0; i < 4; i++)
+	{
+		std::cout << i << std::endl;
+		if(inventory[i])
+			delete inventory[i];
+	}
 	return;
 }
 
@@ -54,37 +62,44 @@ Character const	&Character::operator=(Character const &rhs)
 	this->name = rhs.name;
 	for (int i=0; i<4; i++)
 	{
+		if(this->inventory[i])
+			delete this->inventory[i];
 		if(rhs.inventory[i])
-			this->inventory[i] = new AMateria(*(rhs.inventory[i]));
+			this->inventory[i] = rhs.inventory[i]->clone();
 		else
 			this->inventory[i] = NULL;
 	}
 	return(*this);
 }
 
-/* Functions */
+/* Getters and Setters */
 
-std::string const	&Character::getName()
+std::string const	&Character::getName() const
 {
 	return(this->name);
 }
 
-void				equip(AMateria* m)
+/* Functions */
+void	Character::equip(AMateria* m)
 {
 	int i = 0;
-
-	while(i < 4 & this->inventory[i])
+	while(i < 4 && this->inventory[i])
 		i++;
 	if(i < 4)
 		this->inventory[i] = m;
 }
 
-void				unequip(int idx)
+void	Character::unequip(int idx)
 {
-	this->invenntory[idx]=NULL;
+	if(idx < 0 || idx > 3)
+		return;
+	for(int i=idx; i < 3; i++)
+		this->inventory[i] = this->inventory[i + 1];
+	this->inventory[3] = NULL;
 }
 
-void				use(int idx, ICharacter &target)
+void	Character::use(int idx, ICharacter &target)
 {
-	this->inventory[idx]->use(target);
+	if(idx < 4 && idx >= 0 && this->inventory[idx])
+		this->inventory[idx]->use(target);
 }

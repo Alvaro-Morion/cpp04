@@ -6,7 +6,7 @@
 /*   By: amorion- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/16 12:21:08 by amorion-          #+#    #+#             */
-/*   Updated: 2022/04/16 13:14:23 by amorion-         ###   ########.fr       */
+/*   Updated: 2022/04/19 11:49:12 by amorion-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,9 @@
 
 /* Constructor and destructor */
 
-Cure::Cure() : type("Cure")
+Cure::Cure()
 {
+	this->type = "cure";
 	std::cout << "Cure: default constructor\n"; 
 }
 
@@ -27,7 +28,7 @@ Cure::Cure(Cure const &src)
 
 Cure::~Cure()
 {
-	std::cout << "Cure: destructor\n";"
+	std::cout << "Cure: destructor\n";
 	return;
 }
 
@@ -41,12 +42,13 @@ Cure const	&Cure::operator=(Cure const &rhs)
 
 /* Functions */
 
-Cure	const *Cure::clone()
+AMateria	*Cure::clone() const
 {
-	Cure *clone = new Cure(); 
+	Cure *clone = new Cure();
+   	return(clone);	
 }
 
-void	use(ICharacter& target)
+void	Cure::use(ICharacter& target)
 {
-	std::cout << " heals " << target.getName() << "'s wounds\n";
+	std::cout << "* heals " << target.getName() << "'s wounds *\n";
 }

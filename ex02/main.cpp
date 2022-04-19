@@ -6,7 +6,7 @@
 /*   By: amorion- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 18:46:11 by amorion-          #+#    #+#             */
-/*   Updated: 2022/04/17 13:09:49 by amorion-         ###   ########.fr       */
+/*   Updated: 2022/04/19 10:21:04 by amorion-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int main()
 			delete array[k];
 		delete i;
 		delete j;
-		/*Animal fish //This is an error, an abstract class cannot be instanciated*/;
+		Animal fish /*This is an error, an abstract class cannot be instanciated*/;
 	}	
 	return(0);
 }

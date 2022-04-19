@@ -6,7 +6,7 @@
 /*   By: amorion- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/16 12:21:08 by amorion-          #+#    #+#             */
-/*   Updated: 2022/04/16 12:37:33 by amorion-         ###   ########.fr       */
+/*   Updated: 2022/04/19 12:36:13 by amorion-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,9 @@
 
 /* Constructor and destructor */
 
-Ice::Ice() : type("Ice")
+Ice::Ice() 
 {
+	this->type = "ice";
 	std::cout << "Ice: default constructor\n"; 
 }
 
@@ -27,7 +28,7 @@ Ice::Ice(Ice const &src)
 
 Ice::~Ice()
 {
-	std::cout << "Ice: destructor\n";"
+	std::cout << "Ice: destructor\n";
 	return;
 }
 
@@ -41,13 +42,13 @@ Ice const	&Ice::operator=(Ice const &rhs)
 
 /* Functions */
 
-Ice	const *Ice::clone()
+AMateria	*Ice::clone() const
 {
 	Ice *clone = new Ice(); 
 	return(clone);
 }
 
-void	use(ICharacter& target)
+void	Ice::use(ICharacter& target)
 {
-	std::cout << " Shots an ice ball to" << target.getName() << std::endl;
+	std::cout << "* Shots an ice ball to " << target.getName() << " *\n";
 }
