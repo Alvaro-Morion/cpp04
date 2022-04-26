@@ -6,7 +6,7 @@
 /*   By: amorion- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/16 11:54:23 by amorion-          #+#    #+#             */
-/*   Updated: 2022/04/26 11:33:25 by amorion-         ###   ########.fr       */
+/*   Updated: 2022/04/26 12:54:21 by amorion-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,9 @@ AMateria::~AMateria()
 
 /* Operators */
 
-AMateria const	&AMateria::operator=(AMateria const &rhs)
+void	AMateria::operator=(AMateria const &rhs)
 {
-	return(rhs);
+	this->type = rhs.type;
 }
 
 /* Getters Setters*/
@@ -49,10 +49,8 @@ std::string const &AMateria::getType() const
 {
 	return(this->type);
 }
-/* Funciones Miembro */
-
+/* Member function */
 void	AMateria::use(ICharacter& target)
 {
 	(void)target;
-	return;
 }

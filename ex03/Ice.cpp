@@ -6,7 +6,7 @@
 /*   By: amorion- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/16 12:21:08 by amorion-          #+#    #+#             */
-/*   Updated: 2022/04/26 11:32:25 by amorion-         ###   ########.fr       */
+/*   Updated: 2022/04/26 12:46:03 by amorion-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,9 @@ Ice::~Ice()
 
 /* Operators */
 
-AMateria const	&Ice::operator=(Ice const &rhs)
+void	Ice::operator=(Ice const &rhs)
 {
 	this->type = rhs.type;
-	return(*this);
 }
 
 /* Functions */

@@ -6,7 +6,7 @@
 /*   By: amorion- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/16 12:21:08 by amorion-          #+#    #+#             */
-/*   Updated: 2022/04/26 11:32:49 by amorion-         ###   ########.fr       */
+/*   Updated: 2022/04/26 12:47:49 by amorion-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,9 @@ Cure::~Cure()
 
 /* Operators */
 
-AMateria const	&Cure::operator=(Cure const &rhs)
+void	Cure::operator=(Cure const &rhs)
 {
 	this->type = rhs.type;
-	return(*this);
 }
 
 /* Functions */

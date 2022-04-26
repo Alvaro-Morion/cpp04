@@ -6,7 +6,7 @@
 /*   By: amorion- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 10:28:52 by amorion-          #+#    #+#             */
-/*   Updated: 2022/04/26 12:15:01 by amorion-         ###   ########.fr       */
+/*   Updated: 2022/04/26 14:03:02 by amorion-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,7 @@ MateriaSource::~MateriaSource()
 	for (int i=0; i < 4; i++)
 	{
 		if(memory[i])
-		{
-			std::cout << memory[i]->getType() << " Freed\n";
 			delete memory[i];
-		}
 	}
 	return;
 }
@@ -76,7 +73,9 @@ void	MateriaSource::learnMateria(AMateria* m)
 AMateria* MateriaSource::createMateria(std::string const &type)
 {
 	for(int i=0; i < 4; i++)
-		if(!type.compare(memory[i]->getType()))
+	{
+		if(memory[i] && !type.compare(memory[i]->getType()))
 			return(memory[i]->clone());
+	}
 	return(NULL);
 }

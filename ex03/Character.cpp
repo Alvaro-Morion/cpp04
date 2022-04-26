@@ -6,7 +6,7 @@
 /*   By: amorion- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/16 13:00:47 by amorion-          #+#    #+#             */
-/*   Updated: 2022/04/26 12:14:59 by amorion-         ###   ########.fr       */
+/*   Updated: 2022/04/26 14:14:11 by amorion-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,9 @@ Character::Character(Character const &src)
 	this->name = src.name;
 	for (int i=0; i<4; i++)
 	{
+		this->inventory[i] = NULL;
 		if(src.inventory[i])	 
 			 this->inventory[i] = src.inventory[i]->clone();
-        else
-			this->inventory[i] = NULL;
 	}
 	//std::cout << "Character: Copy constructor\n";
 }
@@ -61,12 +60,11 @@ Character const	&Character::operator=(Character const &rhs)
 	this->name = rhs.name;
 	for (int i=0; i<4; i++)
 	{
-		if(this->inventory[i])
+		if(this->inventory[i] != NULL)
 			delete this->inventory[i];
+		inventory[i] = NULL;
 		if(rhs.inventory[i])
 			this->inventory[i] = rhs.inventory[i]->clone();
-		else
-			this->inventory[i] = NULL;
 	}
 	return(*this);
 }
@@ -85,14 +83,13 @@ void	Character::equip(AMateria* m)
 	while(i < 4 && this->inventory[i])
 		i++;
 	if(i < 4)
-		this->inventory[i] = m->clone();
+		this->inventory[i] = m;
 }
 
 void	Character::unequip(int idx)
 {
 	if(idx < 0 || idx > 3)
 		return;
-	this->inventory[idx] = NULL;
 	for(int i=idx; i < 3; i++)
 	{
 		this->inventory[i] = this->inventory[i + 1];
@@ -102,6 +99,6 @@ void	Character::unequip(int idx)
 
 void	Character::use(int idx, ICharacter &target)
 {
-	if(idx < 4 && idx >= 0 && this->inventory[idx])
+	if(idx < 4 && idx >= 0 && inventory[idx])
 		this->inventory[idx]->use(target);
 }
