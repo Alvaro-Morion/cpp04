@@ -6,16 +6,16 @@
 #    By: amorion- <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/20 09:14:58 by amorion-          #+#    #+#              #
-#    Updated: 2022/04/19 11:35:52 by amorion-         ###   ########.fr        #
+#    Updated: 2022/04/26 11:12:59 by amorion-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS = AMateria.cpp Ice.cpp Cure.cpp Character.cpp main.cpp
+SRCS = AMateria.cpp Ice.cpp Cure.cpp Character.cpp  MateriaSource.cpp main.cpp
 OBJS = $(SRCS:.cpp=.o)
 
 CC = clang++
 
-FLAGS = -std=c++98 -Wall -Werror -Wextra
+FLAGS = -std=c++98 -Wall -Werror -Wextra -g
 
 NAME = a.out
 

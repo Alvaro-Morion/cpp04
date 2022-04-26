@@ -6,7 +6,7 @@
 /*   By: amorion- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/16 13:00:47 by amorion-          #+#    #+#             */
-/*   Updated: 2022/04/19 12:57:28 by amorion-         ###   ########.fr       */
+/*   Updated: 2022/04/26 12:14:59 by amorion-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ Character::Character()
 	this->name = "Unnamed";
 	for (int i=0; i < 4; i++)
 		inventory[i] = NULL;
-	std::cout << "Character: Default constructor\n";
+	//std::cout << "Character: Default constructor\n";
 }
 
 Character::Character(std::string const name)
@@ -27,7 +27,7 @@ Character::Character(std::string const name)
 	this->name = name;
 	for (int i=0; i<4; i++)
 		inventory[i] = NULL;
-	std::cout << "Character: Parametric constructor\n";
+	//std::cout << "Character: Parametric constructor\n";
 }
 
 Character::Character(Character const &src)
@@ -40,16 +40,15 @@ Character::Character(Character const &src)
         else
 			this->inventory[i] = NULL;
 	}
-	std::cout << "Character: Copy constructor\n";
+	//std::cout << "Character: Copy constructor\n";
 }
 
 Character::~Character()
 {
-	std::cout << "Character: destructor\n";
+	//std::cout << this->name <<"Character: destructor\n";
 	for(int i=0; i < 4; i++)
 	{
-		std::cout << i << std::endl;
-		if(inventory[i])
+		if(inventory[i] != NULL)
 			delete inventory[i];
 	}
 	return;
@@ -86,15 +85,18 @@ void	Character::equip(AMateria* m)
 	while(i < 4 && this->inventory[i])
 		i++;
 	if(i < 4)
-		this->inventory[i] = m;
+		this->inventory[i] = m->clone();
 }
 
 void	Character::unequip(int idx)
 {
 	if(idx < 0 || idx > 3)
 		return;
+	this->inventory[idx] = NULL;
 	for(int i=idx; i < 3; i++)
+	{
 		this->inventory[i] = this->inventory[i + 1];
+	}
 	this->inventory[3] = NULL;
 }
 

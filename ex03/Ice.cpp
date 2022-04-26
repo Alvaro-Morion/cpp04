@@ -6,7 +6,7 @@
 /*   By: amorion- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/16 12:21:08 by amorion-          #+#    #+#             */
-/*   Updated: 2022/04/19 12:36:13 by amorion-         ###   ########.fr       */
+/*   Updated: 2022/04/26 11:32:25 by amorion-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,24 +17,24 @@
 Ice::Ice() 
 {
 	this->type = "ice";
-	std::cout << "Ice: default constructor\n"; 
+	//std::cout << "Ice: default constructor\n"; 
 }
 
 Ice::Ice(Ice const &src)
 {
-	*this = src;
-	std::cout << "Ice: copy constructor\n";
+	this->type = src.type;
+	//std::cout << "Ice: copy constructor\n";
 }
 
 Ice::~Ice()
 {
-	std::cout << "Ice: destructor\n";
+	//std::cout << "Ice: destructor\n";
 	return;
 }
 
 /* Operators */
 
-Ice const	&Ice::operator=(Ice const &rhs)
+AMateria const	&Ice::operator=(Ice const &rhs)
 {
 	this->type = rhs.type;
 	return(*this);

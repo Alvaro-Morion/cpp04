@@ -6,7 +6,7 @@
 /*   By: amorion- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/16 12:21:08 by amorion-          #+#    #+#             */
-/*   Updated: 2022/04/19 11:49:12 by amorion-         ###   ########.fr       */
+/*   Updated: 2022/04/26 11:32:49 by amorion-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,24 +17,24 @@
 Cure::Cure()
 {
 	this->type = "cure";
-	std::cout << "Cure: default constructor\n"; 
+	//std::cout << "Cure: default constructor\n"; 
 }
 
 Cure::Cure(Cure const &src)
 {
 	*this = src;
-	std::cout << "Cure: copy constructor\n";
+	//std::cout << "Cure: copy constructor\n";
 }
 
 Cure::~Cure()
 {
-	std::cout << "Cure: destructor\n";
+	//std::cout << "Cure: destructor\n";
 	return;
 }
 
 /* Operators */
 
-Cure const	&Cure::operator=(Cure const &rhs)
+AMateria const	&Cure::operator=(Cure const &rhs)
 {
 	this->type = rhs.type;
 	return(*this);
